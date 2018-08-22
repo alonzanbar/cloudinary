@@ -3,7 +3,7 @@ import logging
 from io import StringIO, BytesIO
 from flask import Flask, send_file, request,abort
 from BL.resize_image import fetch_and_resize
-
+print ("here")
 app = Flask(__name__)
 pass
 @app.route('/thumbnail')
