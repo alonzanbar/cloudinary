@@ -4,7 +4,7 @@ from flask import Flask, send_file, request,abort
 from BL.resize_image import fetch_and_resize
 
 app = Flask(__name__)
-
+pass
 @app.route('/thumbnail')
 def get_resized_image():
     url = request.args.get('url')
