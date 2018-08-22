@@ -1,6 +1,6 @@
 #!flask/bin/python
 from io import StringIO, BytesIO
-from flask import Flask, send_file, request
+from flask import Flask, send_file, request,abort
 from BL.resize_image import fetch_and_resize
 
 app = Flask(__name__)
@@ -8,9 +8,15 @@ app = Flask(__name__)
 @app.route('/thumbnail')
 def get_resized_image():
     url = request.args.get('url')
+    if not url:
+        return abort(400)
     width = request.args.get('width')
+    if not width or not width.isnumeric():
+        return abort(400)
     height = request.args.get('height')
-    im = fetch_and_resize(url,width,height)
+    if not height or not height.isnumeric():
+        return abort(400)
+    im = fetch_and_resize(url,int(width),int(height))
     return serve_pil_image(im)
 
 def serve_pil_image(pil_img):
