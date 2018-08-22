@@ -3,7 +3,7 @@ from io import StringIO, BytesIO
 from flask import Flask, send_file, request,abort
 from BL.resize_image import fetch_and_resize
 from flask import Flask
-app = Flask(__name__)
+app = Flask("app")
 
 @app.route('/thumbnail')
 def get_resized_image():
