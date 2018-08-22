@@ -1,1 +1,1 @@
-web: gunicorn Rest:resize_rest
+web: gunicorn app:app
