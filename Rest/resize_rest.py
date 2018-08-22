@@ -1,4 +1,5 @@
 #!flask/bin/python
+import logging
 from io import StringIO, BytesIO
 from flask import Flask, send_file, request,abort
 from BL.resize_image import fetch_and_resize
@@ -7,6 +8,7 @@ app = Flask(__name__)
 pass
 @app.route('/thumbnail')
 def get_resized_image():
+    print ("here")
     url = request.args.get('url')
     if not url:
         return abort(400)
