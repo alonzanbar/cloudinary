@@ -1,9 +1,9 @@
 #!flask/bin/python
-import logging
 from io import StringIO, BytesIO
 from flask import Flask, send_file, request,abort
 from BL.resize_image import fetch_and_resize
-from app import app
+from flask import Flask
+app = Flask(__name__)
 
 @app.route('/thumbnail')
 def get_resized_image():
