@@ -1,6 +1,10 @@
 from PIL import Image, ImageOps
 import requests
 from io import BytesIO
+from http import HTTPStatus
+
+from BL.Exceptions import URLNotFound, InternalServerError
+
 
 def resize_image(im,w,h):
     desired_size = [w,h]
@@ -29,6 +33,12 @@ def resize_image(im,w,h):
 
 def fetch_image(url):
     response = requests.get(url)
+    if response.status_code!= HTTPStatus.OK:
+        if response.status_code==HTTPStatus.NOT_FOUND:
+            raise URLNotFound
+        if response.status_code==HTTPStatus.INTERNAL_SERVER_ERROR:
+            raise InternalServerError
+        response.raise_for_status()
     img = Image.open(BytesIO(response.content))
     return img
 
