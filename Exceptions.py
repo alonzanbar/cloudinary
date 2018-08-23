@@ -21,9 +21,14 @@ class URLNotFound(HTTP_Error_Hanlder):
         super(URLNotFound,self).__init__(message,404,payload)
 
 
-
 class InternalServerError(HTTP_Error_Hanlder):
     status_code = 500
 
     def __init__(self, message='Remote Server is having some issues, please try later', status_code=None, payload=None):
         super(InternalServerError, self).__init__(message, self.status_code, payload)
+
+class NotImageError(HTTP_Error_Hanlder):
+    status_code = 422
+
+    def __init__(self, message='Request URL does not contain image file', status_code=None, payload=None):
+        super(NotImageError, self).__init__(message, self.status_code, payload)

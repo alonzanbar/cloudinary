@@ -4,11 +4,10 @@ from io import BytesIO
 
 from flask import send_file, request, abort
 
-from Exceptions import URLNotFound
+from Exceptions import URLNotFound, HTTP_Error_Hanlder
 from resize_image import fetch_and_resize
 app = Flask(__name__)
 
-#import cloudinary.error_hanlders
 
 @app.route('/thumbnail')
 def get_resized_image():
@@ -31,11 +30,11 @@ def serve_pil_image(pil_img):
     return send_file(img_io, mimetype='image/jpeg')
 
 
-@app.errorhandler(URLNotFound)
+@app.errorhandler(HTTP_Error_Hanlder)
 def handle_url_not_found(error):
     response = jsonify(error.to_dict())
     response.status_code = error.status_code
     return response
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
