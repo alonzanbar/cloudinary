@@ -1,1 +1,1 @@
-web: gunicorn app.resize_rest:app
+web: gunicorn cloudinary:cloudinary
