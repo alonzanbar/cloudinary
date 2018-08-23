@@ -3,7 +3,7 @@ import requests
 from io import BytesIO
 from http import HTTPStatus
 
-from app.BL.Exceptions import URLNotFound, InternalServerError
+from app.Exceptions import URLNotFound, InternalServerError
 
 
 def resize_image(im,w,h):
