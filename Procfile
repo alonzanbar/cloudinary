@@ -1,1 +1,1 @@
-web: gunicorn cloudinary:cloudinary
+web: gunicorn app:cloudinary
