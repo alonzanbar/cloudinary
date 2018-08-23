@@ -4,8 +4,8 @@ from io import BytesIO
 
 from flask import send_file, request, abort
 
-from app.Exceptions import URLNotFound
-from app.resize_image import fetch_and_resize
+from Exceptions import URLNotFound
+from resize_image import fetch_and_resize
 app = Flask(__name__)
 
 #import cloudinary.error_hanlders
